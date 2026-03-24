@@ -6,24 +6,39 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-   public function up(): void
-{
-    Schema::create('contracts', function (Blueprint $table) {
-        $table->id();
+    public function up(): void
+    {
+        Schema::create('contracts', function (Blueprint $table) {
+            $table->id();
 
-        $table->foreignId('collaborator_id')
-              ->constrained()
-              ->cascadeOnDelete();
+            $table->foreignId('collaborator_id')->constrained()->cascadeOnDelete();
 
-        $table->date('start_date');
-        $table->date('end_date')->nullable();
+            $table->enum('contract_type', [
+                'Fijo',
+                'Indefinido',
+                'Prestación de Servicios'
+            ]);
 
-        $table->decimal('salary', 10, 2);
+            $table->date('start_date');
 
-        $table->timestamps();
-    });
-}
+            $table->date('end_date')->nullable();
+
+            $table->string('position')->nullable();
+
+            $table->decimal('salary',10,2);
+
+            $table->enum('status',[
+                'Activo',
+                'Terminado',
+                'Finalizado'
+            ])->default('Activo');
+
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('contracts');
+    }
 };

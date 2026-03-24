@@ -3,6 +3,8 @@
 use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\ContractController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContractExtensionController;
+
 
 Route::prefix('collaborators')->group(function () {
 
@@ -15,3 +17,5 @@ Route::prefix('collaborators')->group(function () {
 
 Route::post('/contracts', [ContractController::class, 'store']);
 Route::put('/contracts/{id}', [ContractController::class, 'update']);
+
+Route::post('/contract-extensions', [ContractExtensionController::class,'store']);

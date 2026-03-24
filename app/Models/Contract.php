@@ -20,4 +20,9 @@ class Contract extends Model
     {
         return $this->belongsTo(Collaborator::class);
     }
+
+    public function extensions()
+    {
+        return $this->hasMany(ContractExtension::class);
+    }
 }
