@@ -20,4 +20,10 @@ class Collaborator extends Model
         'phone_number',
         'address'
     ];
+
+    public function contracts()
+{
+    return $this->hasMany(Contract::class);
+}
+
 }
