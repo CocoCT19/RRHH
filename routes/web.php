@@ -1,7 +1,23 @@
 <?php
 
+use App\Http\Controllers\CollaboratorController;
+use App\Http\Controllers\ContractController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContractExtensionController;
+use App\Http\Controllers\ContractTerminationController;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('collaborators')->group(function () {
+
+    Route::get('/', [CollaboratorController::class,'index']);
+    Route::post('/', [CollaboratorController::class,'store']);
+    Route::put('/{id}', [CollaboratorController::class,'update']);
+    Route::delete('/{id}', [CollaboratorController::class,'destroy']);
+
 });
+
+Route::post('/contracts', [ContractController::class, 'store']);
+Route::put('/contracts/{id}', [ContractController::class, 'update']);
+
+Route::post('/contract-extensions', [ContractExtensionController::class,'store']);
+
+Route::post('/collaborators/contracts/{id}/terminate', [ContractTerminationController::class, 'store']);
