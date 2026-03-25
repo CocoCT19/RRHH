@@ -19,7 +19,7 @@ Actualmente el sistema permite:
 
 # Tecnologías Utilizadas
 
-* **PHP 8.x**
+* **PHP 8.4**
 * **Laravel 11**
 * **MariaDB / MySQL**
 * **Composer**
