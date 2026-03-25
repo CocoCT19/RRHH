@@ -1,66 +1,295 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gestión de Recursos Humanos (RRHH)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción del Proyecto
 
-## About Laravel
+Este proyecto corresponde al desarrollo de un **Sistema de Gestión de Recursos Humanos** desarrollado con **Laravel**.
+El objetivo del sistema es administrar información relacionada con **colaboradores, contratos laborales, prórrogas y terminaciones anticipadas de contratos**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El proyecto fue desarrollado siguiendo un enfoque de **TDD (Test Driven Development)**, donde cada funcionalidad se implementa para cumplir con los **casos de prueba definidos (CP)**.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Actualmente el sistema permite:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* Registrar colaboradores
+* Crear contratos asociados a colaboradores
+* Registrar prórrogas de contrato
+* Finalizar contratos de manera anticipada
+* Validar datos mediante pruebas automatizadas
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Tecnologías Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+* **PHP 8.x**
+* **Laravel 11**
+* **MariaDB / MySQL**
+* **Composer**
+* **PHPUnit** (para pruebas automatizadas)
+* **Git** (control de versiones)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+# Estructura de Funcionalidades (Casos de Prueba)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+El sistema se desarrolló a partir de los siguientes **Casos de Prueba (CP)**:
 
-### Premium Partners
+### CP-001 – Gestión de Colaboradores
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Permite registrar y administrar colaboradores.
 
-## Contributing
+Funciones implementadas:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Crear colaboradores
+* Listar colaboradores
+* Actualizar colaboradores
+* Eliminar colaboradores
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### CP-002 – Gestión de Contratos
 
-## Security Vulnerabilities
+Permite registrar contratos asociados a colaboradores existentes.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Validaciones:
 
-## License
+* No se puede crear contrato sin colaborador válido
+* Validación de fechas
+* Validación de salario
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+### CP-003 – Prórroga de Contratos
+
+Permite extender un contrato existente mediante:
+
+* Prórroga por tiempo
+* Prórroga por valor
+
+Reglas:
+
+* Solo contratos activos pueden extenderse
+* Actualiza la fecha de finalización del contrato
+
+---
+
+### CP-004 – Terminación Anticipada de Contrato
+
+Permite finalizar un contrato antes de su fecha de finalización.
+
+Se registra:
+
+* Fecha de terminación
+* Motivo de terminación
+
+Restricción:
+
+* No se puede terminar un contrato que ya esté finalizado.
+
+---
+
+# Requisitos del Sistema
+
+Antes de ejecutar el proyecto se debe tener instalado:
+
+* PHP >= 8.2
+* Composer
+* MySQL o MariaDB
+* Git
+
+Opcional:
+
+* Node.js (no necesario para este proyecto)
+
+---
+
+# Instalación del Proyecto
+
+## 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/usuario/nombre-repositorio.git
+```
+
+Entrar a la carpeta del proyecto:
+
+```bash
+cd nombre-repositorio
+```
+
+---
+
+# 2. Instalar dependencias
+
+Ejecutar:
+
+```bash
+composer install
+```
+
+Esto instalará todas las dependencias de Laravel.
+
+---
+
+# 3. Configurar variables de entorno
+
+Copiar el archivo `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Luego generar la clave de la aplicación:
+
+```bash
+php artisan key:generate
+```
+
+---
+
+# 4. Configurar base de datos
+
+Editar el archivo `.env` y configurar:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=rrhh
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Crear la base de datos en MySQL o MariaDB.
+
+---
+
+# 5. Ejecutar migraciones
+
+Crear las tablas necesarias:
+
+```bash
+php artisan migrate
+```
+
+---
+
+# 6. Ejecutar pruebas
+
+Para verificar que el sistema funciona correctamente:
+
+```bash
+php artisan test
+```
+
+Esto ejecutará todas las pruebas automatizadas del sistema.
+
+---
+
+# Estructura del Proyecto
+
+Las partes principales del sistema se encuentran en:
+
+```
+app/
+ ├── Models
+ ├── Http/Controllers
+
+database/
+ └── migrations
+
+routes/
+ └── web.php
+
+tests/
+ └── Feature
+```
+
+---
+
+# Principales Modelos
+
+El sistema utiliza los siguientes modelos:
+
+* **Collaborator**
+* **Contract**
+* **ContractExtension**
+* **ContractTermination**
+
+Relación principal:
+
+```
+Collaborator
+   └── Contracts
+          ├── ContractExtensions
+          └── ContractTermination
+```
+
+---
+
+# Rutas del Sistema
+
+Principales endpoints implementados:
+
+### Colaboradores
+
+```
+GET     /collaborators
+POST    /collaborators
+PUT     /collaborators/{id}
+DELETE  /collaborators/{id}
+```
+
+### Contratos
+
+```
+POST    /contracts
+PUT     /contracts/{id}
+```
+
+### Prórrogas de contrato
+
+```
+POST    /contract-extensions
+```
+
+### Terminación de contrato
+
+```
+POST    /collaborators/contracts/{id}/terminate
+```
+
+---
+
+# Ejecución del servidor
+
+Para iniciar el servidor de desarrollo de Laravel:
+
+```bash
+php artisan serve
+```
+
+El sistema estará disponible en:
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# Autor
+
+Proyecto desarrollado como parte de una práctica de **desarrollo backend con Laravel utilizando TDD**.
+
+Autor:
+Luis Guerra
+
+---
+
+# Licencia
+
+Este proyecto se desarrolla con fines educativos.
+
+---
+
+# Desarrollador
+
+Luis Guerra
