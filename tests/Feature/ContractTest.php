@@ -22,6 +22,7 @@ public function puede_crear_contrato()
 
     $response = $this->post('/contracts', [
         'collaborator_id' => $collaborator->id,
+        'contract_type' => 'Fijo',
         'start_date' => '2024-01-01',
         'end_date' => '2024-12-31',
         'salary' => 2000

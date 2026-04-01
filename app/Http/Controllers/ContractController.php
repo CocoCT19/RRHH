@@ -11,6 +11,7 @@ class ContractController extends Controller
     {
         $data = $request->validate([
             'collaborator_id' => 'required|exists:collaborators,id',
+            'contract_type' => 'required|in:Fijo,Indefinido,Prestación de Servicios',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
             'salary' => 'required|numeric|min:0'

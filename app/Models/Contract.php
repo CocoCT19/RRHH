@@ -11,9 +11,12 @@ class Contract extends Model
 
     protected $fillable = [
         'collaborator_id',
+        'contract_type',
         'start_date',
         'end_date',
-        'salary'
+        'salary',
+        'status',
+        'position',
     ];
 
     public function collaborator()

@@ -20,9 +20,11 @@ public function definition(): array
 {
     return [
         'collaborator_id' => Collaborator::factory(),
+        'contract_type' => $this->faker->randomElement(['Fijo', 'Indefinido', 'Prestación de Servicios']),
         'start_date' => now(),
         'end_date' => now()->addYear(),
         'salary' => $this->faker->numberBetween(1000, 5000),
+        'status' => 'Activo',
     ];
 }
 }
