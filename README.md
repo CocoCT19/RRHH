@@ -90,7 +90,7 @@ Restricción:
 
 Antes de ejecutar el proyecto se debe tener instalado:
 
-* PHP >= 8.2
+* PHP >= 8.4
 * Composer
 * MySQL o MariaDB
 * Git
